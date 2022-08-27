@@ -33,4 +33,39 @@ const createKrystal = async (krystal) => {
     }
   };
 
-module.exports = { getAllKrystals, getKrystal, createKrystal };
+  // UPDATE Route - DONE
+const updateKrystal = async (krystal, id) => {
+    try {
+      const updatedKrystal = await db.one(
+        "UPDATE krystals SET name=$1, healing=$2, url=$3, category=$4  WHERE id=$5 RETURNING *",
+        [
+          krystal.name,
+          krystal.healing,
+          krystal.url,
+          krystal.category,
+          id,
+        ]
+      );
+      console.log(updatedKrystal, "!!!!!!!!!!!!!!!!!!!!!!!!!");
+      return updatedKrystal;
+    } catch (error) {
+      console.log("NO UPDATE");
+  
+      return error;
+    }
+  };
+  // DELETE Route - DONE
+  const deleteKrystal = async (id) => {
+    try {
+      const deletedKrystal = await db.one(
+        "DELETE FROM krystals WHERE id=$1 RETURNING *",
+        id
+      );
+      return deletedKrystal;
+    } catch (error) {
+      return error;
+    }
+  };
+  
+
+module.exports = { getAllKrystals, getKrystal, createKrystal, updateKrystal, deleteKrystal };
