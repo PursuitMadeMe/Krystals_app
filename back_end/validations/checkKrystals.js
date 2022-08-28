@@ -15,6 +15,7 @@ const checkBooleen = (request, response, next)=>{
       console.log(`booleen value not passed. Got ${request.body.is_favorite}`)
       response.status(400).json({error:`is_favorite should be an booleen`})
     }
+    next()
   }
 
 

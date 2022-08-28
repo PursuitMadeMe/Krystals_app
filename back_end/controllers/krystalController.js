@@ -12,7 +12,7 @@ const { checkName, checkBooleen } = require("../validations/checkKrystals");
 //   res.json({ status: "ok" });
 // });
 
-// INDEX
+// INDEX - Read
 krystals.get("/", async (req, res) => {
     const allKrystals = await getAllKrystals();
     if (allKrystals[0]) {
@@ -22,7 +22,7 @@ krystals.get("/", async (req, res) => {
     }
   });
 
-  // SHOW
+  // SHOW - Read
 krystals.get("/:id", async (req, res) => {
     const { id } = req.params;
     const krystal = await getKrystal(id);
