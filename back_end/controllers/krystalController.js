@@ -1,6 +1,7 @@
 const express = require("express");
 const krystals = express.Router();
 const { getAllKrystals, getKrystal, createKrystal, updateKrystal, deleteKrystal } = require("../queries/krystals");
+const { checkName, checkBooleen } = require("../validations/checkKrystals");
 
 // // INDEX
 // krystals.get("/", async (req, res) => {});
@@ -34,7 +35,7 @@ krystals.get("/:id", async (req, res) => {
 
 
 // CREATE
-krystals.post("/", async (req, res) => {
+krystals.post("/", checkName, checkBooleen, async (req, res) => {
     try {
       const krystal = await createKrystal(req.body);
       res.json(krystal);
@@ -44,7 +45,7 @@ krystals.post("/", async (req, res) => {
   });
 
 // UPDATE
-krystals.put("/:id", async (req, res) => {
+krystals.put("/:id", checkBooleen, checkName, async (req, res) => {
     const { id } = req.params;
     console.log(id);
    
