@@ -24,7 +24,7 @@ const getAllKrystals = async () => {
 const createKrystal = async (krystal) => {
     try {
       const newKrystal = await db.one(
-        "INSERT INTO krystals (name, healing, url, category) VALUES($1, $2, $3, $4) RETURNING *",
+        "INSERT INTO krystals (name, healing, chakra, url, numerology, category, is_favorite) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *",
         [krystal.name, krystal.healing, krystal.url, krystal.category, ]
       );
       return newKrystal;
@@ -37,12 +37,15 @@ const createKrystal = async (krystal) => {
 const updateKrystal = async (krystal, id) => {
     try {
       const updatedKrystal = await db.one(
-        "UPDATE krystals SET name=$1, healing=$2, url=$3, category=$4  WHERE id=$5 RETURNING *",
+        "UPDATE krystals SET name=$1, healing=$2, chakra=$3, url=$4, numerology=$5, category=$6, is_favorite=$7  WHERE id=$8 RETURNING *",
         [
           krystal.name,
           krystal.healing,
+          krystal.chakra,
           krystal.url,
+          krystal.numerology,
           krystal.category,
+          krystal.is_favorite,
           id,
         ]
       );
