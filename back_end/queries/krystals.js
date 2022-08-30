@@ -1,6 +1,6 @@
 const db = require("../db/dbConfig.js");
 
-// INDEX
+// INDEX Route - DONE 
 const getAllKrystals = async () => {
     try {
         const allKrystals = await db.any("SELECT * FROM krystals");
@@ -10,7 +10,7 @@ const getAllKrystals = async () => {
       }
     };
 
-    // SHOW
+    // SHOW Route - DONE 
     const getKrystal = async (id) => {
         try {
           const oneKrystal = await db.one("SELECT * FROM krystals WHERE id=$1", id);
@@ -20,7 +20,7 @@ const getAllKrystals = async () => {
         }
       };
 
-      // CREATE
+      // CREATE Route - DONE
 const createKrystal = async (krystal) => {
     try {
       const newKrystal = await db.one(
