@@ -85,6 +85,8 @@ It is recommended that you open a new terminal tab that will be dedicated to run
 REACT_APP_API_URL=http://localhost:3003
 ```
 - `npm install` - install npm packages listed in `package.json`
+- `npm install react-router-dom
+- `npm install axios
 - `npm start` - make sure your React app can start
 
 

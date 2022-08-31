@@ -8,7 +8,7 @@ CREATE TABLE krystals (
     name TEXT NOT NULL,
     healing TEXT NOT NULL,
     chakra TEXT NOT NULL,
-    url TEXT,
+    image TEXT,
     numerology INT NOT NULL,
     category TEXT,
     is_favorite BOOLEAN
